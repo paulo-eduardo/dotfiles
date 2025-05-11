@@ -1,0 +1,85 @@
+-- ~/.config/nvim/lua/plugins/avante.lua
+return {
+  "yetone/avante.nvim",
+  event = "VeryLazy",
+  build = "make",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter",
+    "stevearc/dressing.nvim",
+    "nvim-lua/plenary.nvim",
+    "MunifTanjim/nui.nvim",
+    "nvim-tree/nvim-web-devicons",
+    "ibhagwan/fzf-lua", -- Optional for file selector
+    "nvim-telescope/telescope.nvim", -- Optional for file selector
+    "zbirenbaum/copilot.lua", -- Optional for AI integration
+    {
+      "HakonHarnes/img-clip.nvim",
+      opts = {
+        default = {
+          embed_image_as_base64 = true,
+          use_absolute_path = true,
+        },
+      },
+    },
+    {
+      "MeanderingProgrammer/render-markdown.nvim",
+      opts = { file_types = { "markdown", "Avante" } },
+    },
+  },
+  config = function()
+    require("avante").setup({
+      -- Essential window configuration
+      windows = {
+        default_provider = "dressing",
+        dressing = {
+          anchor = "auto",
+          relative = "cursor",
+          width = 80,
+          height = 15,
+        },
+        max_width = 120,
+        min_height = 10,
+        border = "rounded",
+      },
+
+      -- Recommended default configuration
+      mentions = {
+        providers = { "copilot", "telescope", "fzf" },
+      },
+
+      file_selector = {
+        providers = { "telescope", "fzf", "mini.pick" },
+      },
+
+      -- Optional keybindings
+      keymaps = {
+        open = "<leader>aa", -- Open Avante interface
+        insert_mode = {
+          confirm = "<C-s>", -- Confirm selection
+          cancel = "<C-q>", -- Cancel operation
+        },
+      },
+
+      -- Enable additional features
+      features = {
+        markdown_preview = true,
+        image_paste = true,
+        ai_assist = true,
+      },
+    })
+
+    -- Optional: Additional dressing.nvim configuration
+    require("dressing").setup({
+      input = {
+        enabled = true,
+        default_prompt = "Avante:",
+        insert_only = false,
+        override = function(conf)
+          conf.col = -1
+          conf.row = 0
+          return conf
+        end,
+      },
+    })
+  end,
+}
