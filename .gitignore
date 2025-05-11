@@ -1,0 +1,9 @@
+*.bak
+flutter/
+exercism/
+containers/
+qBittorrent/
+raycast/
+zsh/
+
+.DS_Store
