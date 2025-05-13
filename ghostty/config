@@ -1,0 +1,4 @@
+theme = catppuccin-mocha.conf
+
+# Simple shell command - use your default shell directly
+command = /opt/homebrew/bin/zsh
