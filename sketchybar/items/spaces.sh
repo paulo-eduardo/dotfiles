@@ -10,6 +10,9 @@ do
                               label.font="sketchybar-app-font:Regular:16.0" \
                               label.padding_right=20                     \
                               label.y_offset=-1                          \
+                              background.color=$ITEM_BG_COLOR            \
+                              icon.color=$WHITE                          \
+                              label.color=$WHITE                         \
                               script="$PLUGIN_DIR/space.sh"              
 done
 
