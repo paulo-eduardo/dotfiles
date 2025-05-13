@@ -1,0 +1,80 @@
+###############################################################################
+#
+# Copyright 2023 Paulo Gomes
+#
+# Based on Catppuccin colors
+# https://github.com/catppuccin/catppuccin
+#
+###############################################################################
+
+rule.precedence.color=deleted,completed,active,keyword.,tag.,project.,overdue,scheduled,due.today,due,blocked,blocking,recurring,tagged,uda.
+
+# General decoration
+color.label=color6
+color.label.sort=color14
+color.alternate=
+color.header=color5
+color.footnote=color6
+color.warning=color1
+color.error=color9
+color.debug=color14
+
+# Task state
+color.completed=color8
+color.deleted=color8
+color.active=color5
+color.recurring=color4
+color.scheduled=color6
+color.until=color13
+color.blocked=color8
+color.blocking=color10
+
+# Project
+color.project.none=
+
+# Priority
+color.uda.priority.H=color9
+color.uda.priority.M=color11
+color.uda.priority.L=color12
+
+# Tags
+color.tag.next=color13
+color.tag.none=
+color.tagged=color10
+
+# Due
+color.due=color11
+color.due.today=color1
+color.overdue=color9
+
+# Report: burndown
+color.burndown.done=color8
+color.burndown.pending=color1
+color.burndown.started=color5
+
+# Report: history
+color.history.add=color1
+color.history.delete=color8
+color.history.done=color6
+
+# Report: summary
+color.summary.background=white on black
+color.summary.bar=black on color6
+
+# Command: calendar
+color.calendar.due=color1
+color.calendar.due.today=color9
+color.calendar.holiday=color13
+color.calendar.overdue=color9
+color.calendar.today=color5
+color.calendar.weekend=color14
+color.calendar.weeknumber=color5
+
+# Command: sync
+color.sync.added=color14
+color.sync.changed=color11
+color.sync.rejected=color9
+
+# Command: undo
+color.undo.after=color9
+color.undo.before=color1 

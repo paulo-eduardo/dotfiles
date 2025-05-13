@@ -57,6 +57,7 @@ source $ITEM_DIR/media.sh
 
 # -- Right Side Items --
 source $ITEM_DIR/calendar.sh
+source $ITEM_DIR/wifi.sh
 source $ITEM_DIR/volume.sh
 source $ITEM_DIR/battery.sh
 source $ITEM_DIR/cpu.sh
@@ -70,7 +71,7 @@ sketchybar --add bracket left_group front_app '/space\..*/' \
                             background.padding_left=10 \
                             background.padding_right=10
 
-sketchybar --add bracket right_group media calendar volume battery cpu memory \
+sketchybar --add bracket right_group media calendar wifi volume battery cpu memory  \
            --set right_group background.color=$BAR_COLOR \
                              background.corner_radius=15 \
                              background.height=30 \
@@ -83,7 +84,8 @@ sketchybar --set media    background.color=$ITEM_BG_COLOR \
            --set volume   background.color=$ITEM_BG_COLOR \
            --set battery  background.color=$ITEM_BG_COLOR \
            --set cpu      background.color=$ITEM_BG_COLOR \
-           --set memory   background.color=$ITEM_BG_COLOR
+           --set memory   background.color=$ITEM_BG_COLOR \
+           --set wifi     background.color=$ITEM_BG_COLOR
 
 ##### Finalizing Setup #####
 # The below command is only needed at the end of the initial configuration to
