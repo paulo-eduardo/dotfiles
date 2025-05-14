@@ -1,0 +1,4 @@
+backend_type = "Sqlite"
+
+[sqlite_backend]
+file_path = "/Users/paulo/.tui-journal/entries.db"

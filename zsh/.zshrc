@@ -70,7 +70,19 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+    git            # Better Git integration
+    zsh-autosuggestions     # Suggests commands as you type based on history
+    zsh-syntax-highlighting # Syntax highlighting for commands
+    sudo           # Press ESC twice to add sudo to current command
+    web-search     # Allows searching from terminal (e.g., google ruby)
+    copypath       # Copy current directory path to clipboard
+    dirhistory     # Navigate directory history with Alt+Left/Right
+    history        # Better history handling
+    macos          # macOS-specific commands and aliases
+    docker         # Docker commands completion
+    npm            # npm commands completion
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,6 +114,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+source ~/.config/zsh/aliases.zsh
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
