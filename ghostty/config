@@ -1,4 +1,4 @@
 theme = catppuccin-mocha.conf
-
+background-opacity = 0.7
 # Simple shell command - use your default shell directly
-command = /opt/homebrew/bin/zsh
+command = /bin/zsh
