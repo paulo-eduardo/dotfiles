@@ -4,7 +4,17 @@ exercism/
 containers/
 qBittorrent/
 raycast/
-zsh/
 cursor/
 
+# Ignore Zsh history, completion dumps, and sessions
+zsh/.zsh_history
+zsh/.zcompdump-*
+zsh/.zsh_sessions/
+
+# Ignore potential lazygit logs or temporary files if they appear in ~/.config/lazygit/
+# The config.yml itself should NOT be ignored
+lazygit/logs/ # Example: if lazygit creates a logs directory
+# Add other specific files/directories within lazygit/ if needed, but NOT config.yml
+
+# Ignore common OS generated files
 .DS_Store
