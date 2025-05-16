@@ -2,6 +2,7 @@
 
 # Get Wi-Fi info using wdutil
 WIFI_INFO=$(sudo wdutil info)
+echo "$WIFI_INFO"
 
 # Check connection status by looking for SSID
 # If SSID is present and not empty, we are connected.
