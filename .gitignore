@@ -6,6 +6,7 @@ qBittorrent/
 raycast/
 cursor/
 StardewValley/
+oh-my-zsh/
 
 # Ignore Zsh history, completion dumps, and sessions
 zsh/.zsh_history
