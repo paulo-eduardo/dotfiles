@@ -24,10 +24,10 @@ If you see files named `id_rsa.pub` or `id_ed25519.pub`, you already have a key 
 
 **2. Generate a New SSH Key:**
 
-If you don't have a key, generate a new one. The `ed25519` algorithm is recommended as it's more secure and performant. Replace `your_email@example.com` with your GitHub email address.
+If you don't have a key, generate a new one. The `ed25519` algorithm is recommended as it's more secure and performant. Use your GitHub email address.
 
 ```bash
-ssh-keygen -t ed25519 -C "your_email@example.com"
+ssh-keygen -t ed25519 -C "pauloes.dev@gmail.com"
 ```
 
 When prompted to "Enter a file in which to save the key," press Enter to accept the default location. You'll be asked to enter a passphrase, which is optional but highly recommended for security.
