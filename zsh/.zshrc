@@ -8,7 +8,7 @@ export ZSH="$HOME/.config/oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="catppuccin"
+ZSH_THEME="catppuccin-zsh"
 CATPPUCCIN_FLAVOR="mocha" 
 CATPPUCCIN_SHOW_TIME=true  
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -80,10 +80,9 @@ plugins=(
     macos          # macOS-specific commands and aliases
     docker         # Docker commands completion
     npm            # npm commands completion
+    zsh-autosuggestions
+    zsh-syntax-highlighting
 )
-
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -117,7 +116,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.config/zsh/aliases.zsh
-source ~/.config/zsh/.env.zsh
+source "/Users/paulo/.config/zsh/.env.zsh"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -129,4 +128,4 @@ export PATH="/opt/homebrew/opt/python@3.11/libexec/bin:$PATH"
 
 eval "$(starship init zsh)"
 
-. "$HOME/.local/bin/env"
+. "/Users/paulo/.local/bin/env"
