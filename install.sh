@@ -2,7 +2,7 @@ set -e
 
 echo "Starging setup..."
 
-if !command - v brew $ >/dev/null; then
+if ! command -v brew &>/dev/null; then
   echo "Homebrew not found. Installing..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Home/brew/install/HEAD/install.sh)"
 else
