@@ -1,18 +1,8 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>sx", builtin.resume, { noremap = true, silent = true })
 
 local opts = { noremap = true, silent = true }
--- Tabnine keybindings
-vim.keymap.set("n", "<leader>ts", ":TabnineStatus<CR>", opts) -- Show status
-vim.keymap.set("n", "<leader>tc", ":TabnineChat<CR>", opts) -- Open chat
-vim.keymap.set("n", "<leader>ta", ":TabnineAccept<CR>", opts) -- Accept suggestion
-vim.keymap.set("n", "<leader>tr", ":TabnineReject<CR>", opts) -- Reject suggestion
-vim.keymap.set("n", "<leader>tf", ":TabnineFix<CR>", opts) -- Fix function in scope
-vim.keymap.set("n", "<leader>tt", ":TabnineTest<CR>", opts) -- Generate tests
-vim.keymap.set("n", "<leader>te", ":TabnineExplain<CR>", opts) -- Explain function
 
 -- Flutter keybindings (using <leader>m for mobile)
 -- Main commands

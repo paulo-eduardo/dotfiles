@@ -87,7 +87,7 @@ ctrl - 6 : yabai -m space --focus 6;
 ctrl - 7 : yabai -m space --focus 7;
 
 # Open Ghostty with global tmux session in a floating window at the bottom third of the screen
-cmd + alt - f : open -na "Ghostty" --args -e ~/.config/global-scripts/tmux-global.sh; \
-                sleep 0.1; \
-                GHOSTTY_WINDOW=$(yabai -m query --windows | jq '.[] | select(.app=="Ghostty" and .title | contains("tmux")) | .id' | head -n1); \
-                yabai -m window $GHOSTTY_WINDOW --toggle float --grid 3:1:0:2:1:1;
+# cmd + alt - f : open -na "Ghostty" --args -e ~/.config/global-scripts/tmux-global.sh; \
+#                 sleep 0.1; \
+#                 GHOSTTY_WINDOW=$(yabai -m query --windows | jq '.[] | select(.app=="Ghostty" and .title | contains("tmux")) | .id' | head -n1); \
+#                 yabai -m window $GHOSTTY_WINDOW --toggle float --grid 3:1:0:2:1:1;

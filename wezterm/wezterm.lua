@@ -33,8 +33,7 @@ config.use_fancy_tab_bar = false
 config.window_decorations = "RESIZE"
 
 -- Background opacity and blur
-config.window_background_opacity = 0.80
+config.window_background_opacity = 0.90
 config.macos_window_background_blur = 10
 
 return config
-

@@ -116,6 +116,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.config/zsh/aliases.zsh
+source ~/.config/zsh/.env.zsh
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -126,3 +127,5 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/opt/homebrew/opt/python@3.11/libexec/bin:$PATH"
 
 eval "$(starship init zsh)"
+
+. "$HOME/.local/bin/env"

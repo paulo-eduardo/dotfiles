@@ -5,11 +5,13 @@ containers/
 qBittorrent/
 raycast/
 cursor/
+StardewValley/
 
 # Ignore Zsh history, completion dumps, and sessions
 zsh/.zsh_history
 zsh/.zcompdump-*
 zsh/.zsh_sessions/
+zsh/.env.zsh
 
 # Ignore potential lazygit logs or temporary files if they appear in ~/.config/lazygit/
 # The config.yml itself should NOT be ignored

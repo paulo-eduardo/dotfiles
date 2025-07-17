@@ -12,8 +12,7 @@ do
                               label.y_offset=-1                          \
                               background.color=$ITEM_BG_COLOR            \
                               icon.color=$WHITE                          \
-                              label.color=$WHITE                         \
-                              script="$PLUGIN_DIR/space.sh"              
+                              label.color=$WHITE                         \n                              script="$PLUGIN_DIR/space.sh"              \n                              click_script="yabai -m space --focus $sid"              
 done
 
 sketchybar --add item space_separator left                             \
