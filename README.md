@@ -112,7 +112,7 @@ git clone git@github.com:paulo-eduardo/dotfiles.git ~/.config
 The `install.sh` script will handle the rest of the automated setup. It will:
 - Install Homebrew if it's not already present.
 - Install all applications and tools listed in the `Brewfile`.
-- Start the `yabai`, `skhd`, and `sketchybar` services.
+
 
 Navigate to the configuration directory and run the script:
 ```bash
@@ -147,7 +147,29 @@ After the script finishes, a few manual steps are required to grant permissions.
    - Go to `System Settings > Privacy & Security > Screen Recording`.
    - Enable access for `yabai`.
 
-### Step 5: Reboot
+### Step 5: Start Yabai, SKHD, and Sketchybar
+
+After the installation and granting permissions, you can start the services for yabai, skhd, and sketchybar. The first time you run these, you might be prompted to grant additional permissions.
+
+```bash
+yabai --start-service
+skhd --start-service
+brew services start sketchybar
+```
+
+### Step 6: Hide the macOS Top Bar and Dock
+
+To achieve a cleaner desktop experience, you can hide the default macOS top bar and dock.
+
+**Hide the Dock:**
+1. Go to `System Settings` > `Desktop & Dock`.
+2. Turn on `Automatically hide and show the Dock`.
+
+**Hide the Menu Bar:**
+1. Go to `System Settings` > `Desktop & Dock`.
+2. Under `Menu Bar`, set `Automatically hide and show the menu bar` to `Always`.
+
+### Step 7: Reboot
 
 A final reboot is recommended to ensure all services and settings are correctly loaded.
 
