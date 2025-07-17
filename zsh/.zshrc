@@ -72,8 +72,6 @@ CATPPUCCIN_SHOW_TIME=true
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git            # Better Git integration
-    zsh-autosuggestions     # Suggests commands as you type based on history
-    zsh-syntax-highlighting # Syntax highlighting for commands
     sudo           # Press ESC twice to add sudo to current command
     web-search     # Allows searching from terminal (e.g., google ruby)
     copypath       # Copy current directory path to clipboard
@@ -83,6 +81,9 @@ plugins=(
     docker         # Docker commands completion
     npm            # npm commands completion
 )
+
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source $ZSH/oh-my-zsh.sh
 

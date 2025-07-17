@@ -1,0 +1,18 @@
+gui:
+  theme:
+    lightTheme: false # Catppuccin is a dark theme
+    activeBorderColor:
+      - '#cba6f7' # Mauve
+      - bold
+    inactiveBorderColor:
+      - '#6c7086' # Overlay0
+    optionsTextColor:
+      - '#89b4fa' # Blue
+    selectedLineBgColor:
+      - '#313244' # Surface0
+    cherryPickedCommitBgColor:
+      - '#45475a' # Surface1
+    cherryPickedCommitFgColor:
+      - '#a6e3a1' # Green
+    unstagedChangesColor:
+      - '#f38ba8' # Red
