@@ -8,12 +8,67 @@ It automates the installation of applications and command-line tools using [Home
 
 Follow these steps in order to set up a new Mac.
 
-### Step 1: Clone the Repository
+### Step 1: Authenticate with GitHub
+
+Before you can clone the repository, you need to authenticate with GitHub. Using SSH is the recommended method, as it's secure and convenient.
+
+**1. Check for Existing SSH Keys:**
+
+First, check if you already have an SSH key. Open your terminal and run:
+
+```bash
+ls -al ~/.ssh
+```
+
+If you see files named `id_rsa.pub` or `id_ed25519.pub`, you already have a key and can skip to step 3.
+
+**2. Generate a New SSH Key:**
+
+If you don't have a key, generate a new one. The `ed25519` algorithm is recommended as it's more secure and performant. Replace `your_email@example.com` with your GitHub email address.
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+When prompted to "Enter a file in which to save the key," press Enter to accept the default location. You'll be asked to enter a passphrase, which is optional but highly recommended for security.
+
+**3. Add Your SSH Key to the ssh-agent:**
+
+To ensure your key is automatically used for authentication, start the `ssh-agent` and add your key.
+
+```bash
+# Start the ssh-agent in the background
+eval "$(ssh-agent -s)"
+
+# Add your private key to the agent
+ssh-add ~/.ssh/id_ed25519
+```
+
+**4. Add the SSH Key to Your GitHub Account:**
+
+Now, you need to add the public key to your GitHub account.
+
+-   **Copy the public key to your clipboard.** The command depends on your operating system.
+    -   **macOS:**
+        ```bash
+        pbcopy < ~/.ssh/id_ed25519.pub
+        ```
+-   **Go to your GitHub settings:**
+    1.  In the upper-right corner of any page, click your profile photo, then click **Settings**.
+    2.  In the "Access" section of the sidebar, click **SSH and GPG keys**.
+    3.  Click **New SSH key** or **Add SSH key**.
+    4.  In the "Title" field, add a descriptive label for the new key (e.g., "My MacBook Pro").
+    5.  In the "Key" field, paste your public key.
+    6.  Click **Add SSH key**.
+
+You are now authenticated to use Git and GitHub.
+
+### Step 2: Clone the Repository
 
 First, clone this repository into your `~/.config` directory. This location is intentionally chosen so that applications that follow the XDG Base Directory Specification will find their configurations automatically without needing symbolic links.
 
 ```bash
-git clone <your-repository-url> ~/.config
+git clone git@github.com:paulo-eduardo/dotfiles.git ~/.config
 ```
 
 ### Step 2: Disable System Integrity Protection (SIP)
