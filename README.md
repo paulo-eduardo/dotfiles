@@ -76,22 +76,36 @@ git clone git@github.com:paulo-eduardo/dotfiles.git ~/.config
 `yabai` requires SIP to be partially disabled to allow its scripting addition to control windows, spaces, and displays.
 
 **1. Boot into Recovery Mode:**
-   - **Apple Silicon:** Shut down your Mac. Press and hold the power button until you see "Loading startup options". Click **Options**, then **Continue**.
-   - **Intel:** Shut down your Mac. Hold down `Command (⌘) + R` while booting.
+   - **Intel Macs:** Hold down `Command ⌘ + R` while booting your device.
+   - **Apple Silicon Macs:** Press and hold the power button until "Loading startup options" appears. Then, click "Options" and "Continue".
 
 **2. Open the Terminal:**
-   - In the recovery screen, navigate to `Utilities > Terminal` from the menu bar.
+   - In the menu bar, go to `Utilities` > `Terminal`.
 
-**3. Disable SIP:**
-   - Execute the following command in the recovery terminal:
-     ```sh
-     # This is the recommended setting for yabai, as it's less permissive than fully disabling SIP.
-     csrutil disable --with-dtrace
+**3. Run the appropriate command:**
+   - **For Apple Silicon (macOS 13.x or newer):**
+     ```bash
+     csrutil enable --without fs --without debug --without nvram
+     ```
+   - **For Apple Silicon (macOS 12.x.x):**
+     ```bash
+     csrutil disable --with kext --with dtrace --with basesystem
+     ```
+   - **For Intel (macOS 11.x.x or newer):**
+     ```bash
+     csrutil disable --with kext --with dtrace --with nvram --with basesystem
      ```
 
 **4. Reboot your Mac.**
 
-You can verify the status after rebooting by running `csrutil status` in a normal terminal.
+**5. For Apple Silicon, enable non-Apple-signed arm64e binaries:**
+   - Open a terminal and run the following command, then reboot:
+     ```bash
+     sudo nvram boot-args=-arm64e_preview_abi
+     ```
+
+**6. Verify SIP Status:**
+   - You can check if SIP is disabled by running `csrutil status` in the terminal. The output should be `System Integrity Protection status: disabled.` (or `unknown` on some newer macOS versions).
 
 ### Step 3: Run the Installation Script
 
