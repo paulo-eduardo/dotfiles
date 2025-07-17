@@ -19,4 +19,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 brew bundle install --file ./Brewfile
 
+ln -sf ~/.config/zsh/.zshenv ~/.zshenv
+
 
