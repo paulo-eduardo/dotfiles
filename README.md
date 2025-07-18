@@ -186,13 +186,6 @@ This setup includes comprehensive keyboard shortcuts for window management and s
 
 📋 **[View complete keyboard shortcuts reference →](skhd/README.md)**
 
-Key highlights:
-- `Alt + h/j/k/l` - Navigate between windows (vim-style)
-- `Shift + Alt + h/j/k/l` - Swap windows
-- `Ctrl + 1-7` - Focus desktop spaces
-- `Shift + Alt + m` - Toggle fullscreen
-- `Cmd + Alt + n` - Create new space
-
 ## Customization
 
 ### Modifying Window Management
