@@ -180,28 +180,18 @@ sudo reboot
 
 Your Mac should now be fully configured. Enjoy!
 
-## Key Bindings
+## Keyboard Shortcuts
 
-### Window Navigation
-- `Alt + h/j/k/l`: Move focus between windows
-- `Alt + s/g`: Switch between displays
-- `Ctrl + 1-7`: Focus desktop space
+This setup includes comprehensive keyboard shortcuts for window management and system control. 
 
-### Window Management
-- `Shift + Alt + h/j/k/l`: Swap windows
-- `Ctrl + Alt + h/j/k/l`: Move window and split
-- `Shift + Alt + m`: Toggle fullscreen
-- `Shift + Alt + t`: Toggle floating window
-- `Shift + Alt + e`: Balance window sizes
+📋 **[View complete keyboard shortcuts reference →](skhd/README.md)**
 
-### Space Management
-- `Cmd + Alt + n`: Create new space
-- `Cmd + Alt + d`: Destroy current space
-- `Shift + Alt + 1-7`: Move window to space
-- `Shift + Alt + p/n`: Move window to prev/next space
-
-### System Controls
-- `Ctrl + Alt + q/s/r`: Stop/start/restart yabai
+Key highlights:
+- `Alt + h/j/k/l` - Navigate between windows (vim-style)
+- `Shift + Alt + h/j/k/l` - Swap windows
+- `Ctrl + 1-7` - Focus desktop spaces
+- `Shift + Alt + m` - Toggle fullscreen
+- `Cmd + Alt + n` - Create new space
 
 ## Customization
 
