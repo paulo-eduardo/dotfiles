@@ -1,12 +1,55 @@
-# macOS Configuration Setup
+# macOS Development Environment
 
-This repository contains the configuration files and setup script to quickly configure a new macOS installation to my personal preferences.
+A comprehensive dotfiles setup for macOS that creates a modern, efficient development environment with tiling window management, a custom status bar, and a fully configured Neovim setup.
 
-It automates the installation of applications and command-line tools using [Homebrew](https://brew.sh/) and sets up window management with [yabai](https://github.com/koekeishiya/yabai) and [skhd](https://github.com/koekeishiya/skhd).
+## What This Setup Provides
 
-## Setup Instructions
+### 🪟 **Window Management (Yabai + SKHD)**
+- **Binary Space Partitioning (BSP)**: Automatic window tiling that maximizes screen real estate
+- **Keyboard-driven navigation**: Move between windows with `Alt + hjkl` (vim-style)
+- **Flexible layouts**: Rotate, flip, and balance window arrangements
+- **Multi-monitor support**: Seamlessly move windows between displays
+- **Space management**: Create, destroy, and navigate between desktop spaces
+- **Mouse integration**: Alt + drag to move/resize windows
 
-Follow these steps in order to set up a new Mac.
+### 📊 **Custom Status Bar (SketchyBar)**
+- **Minimal floating design**: Clean, modern appearance that doesn't clutter your desktop
+- **System monitoring**: Real-time CPU, memory, and battery information
+- **Media controls**: Current playing music with playback controls
+- **Network status**: WiFi connection information
+- **Date/time display**: Always visible calendar information
+- **Active app indicator**: Shows your current focused application
+- **Space indicators**: Visual representation of your desktop spaces
+
+### ⚡ **Neovim Configuration (LazyVim)**
+- **LazyVim base**: Built on the popular LazyVim distribution for instant productivity
+- **Catppuccin theme**: Beautiful, consistent theming with transparency support
+- **Language support**: Pre-configured for TypeScript, JSON, and more
+- **Enhanced UI**: Smooth animations and improved visual feedback
+- **Plugin management**: Lazy-loading for optimal performance
+- **Custom tweaks**: Additional configurations for better workflow
+
+### 🛠 **Development Tools**
+- **Homebrew**: Package manager with curated app selection
+- **Git integration**: Enhanced git workflow with LazyGit
+- **Terminal enhancement**: Optimized Zsh configuration with Oh My Zsh
+- **Modern replacements**: btop, wezterm, and other improved CLI tools
+- **AI assistants**: Claude and Gemini CLI tools for development assistance
+
+## Visual Preview
+
+Once installed, you'll have:
+- **Tiled windows** that automatically organize and resize
+- **A floating status bar** at the top showing system info and current app
+- **Vim-style navigation** throughout your desktop environment
+- **Beautiful, consistent theming** across all applications
+- **Distraction-free workspace** with hidden dock and menu bar
+
+## Installation
+
+### Prerequisites
+- macOS (tested on recent versions)
+- Administrator access for system modifications
 
 ### Step 1: Authenticate with GitHub
 
@@ -27,7 +70,7 @@ If you see files named `id_rsa.pub` or `id_ed25519.pub`, you already have a key 
 If you don't have a key, generate a new one. The `ed25519` algorithm is recommended as it's more secure and performant. Use your GitHub email address.
 
 ```bash
-ssh-keygen -t ed25519 -C "pauloes.dev@gmail.com"
+ssh-keygen -t ed25519 -C "your.email@example.com"
 ```
 
 When prompted to "Enter a file in which to save the key," press Enter to accept the default location. You'll be asked to enter a passphrase, which is optional but highly recommended for security.
@@ -71,7 +114,7 @@ First, clone this repository into your `~/.config` directory. This location is i
 git clone git@github.com:paulo-eduardo/dotfiles.git ~/.config
 ```
 
-### Step 2: Disable System Integrity Protection (SIP)
+### Step 3: Disable System Integrity Protection (SIP)
 
 `yabai` requires SIP to be partially disabled to allow its scripting addition to control windows, spaces, and displays.
 
@@ -101,7 +144,7 @@ git clone git@github.com:paulo-eduardo/dotfiles.git ~/.config
 **5. Verify SIP Status:**
    - You can check if SIP is disabled by running `csrutil status` in the terminal. The output should be `System Integrity Protection status: disabled.` (or `unknown` on some newer macOS versions).
 
-### Step 3: Run the Installation Script
+### Step 4: Run the Installation Script
 
 The `install.sh` script will handle the automated setup. It will:
 - Check that SIP is properly disabled for yabai
@@ -112,14 +155,13 @@ The `install.sh` script will handle the automated setup. It will:
 - Configure macOS settings (auto-hide dock and menu bar)
 - Start all services (yabai, skhd, sketchybar)
 
-
 Navigate to the configuration directory and run the script:
 ```bash
 cd ~/.config
 ./install.sh
 ```
 
-### Step 4: Grant System Permissions
+### Step 5: Grant System Permissions
 
 The installation script will attempt to start services, which will prompt for permissions. If you miss any prompts, manually grant permissions:
 
@@ -128,7 +170,7 @@ The installation script will attempt to start services, which will prompt for pe
 3. Go to `System Settings > Privacy & Security > Screen Recording`.
 4. Enable access for `yabai`.
 
-### Step 5: Reboot
+### Step 6: Reboot
 
 A final reboot is recommended to ensure all services and settings are correctly loaded.
 
@@ -137,3 +179,83 @@ sudo reboot
 ```
 
 Your Mac should now be fully configured. Enjoy!
+
+## Key Bindings
+
+### Window Navigation
+- `Alt + h/j/k/l`: Move focus between windows
+- `Alt + s/g`: Switch between displays
+- `Ctrl + 1-7`: Focus desktop space
+
+### Window Management
+- `Shift + Alt + h/j/k/l`: Swap windows
+- `Ctrl + Alt + h/j/k/l`: Move window and split
+- `Shift + Alt + m`: Toggle fullscreen
+- `Shift + Alt + t`: Toggle floating window
+- `Shift + Alt + e`: Balance window sizes
+
+### Space Management
+- `Cmd + Alt + n`: Create new space
+- `Cmd + Alt + d`: Destroy current space
+- `Shift + Alt + 1-7`: Move window to space
+- `Shift + Alt + p/n`: Move window to prev/next space
+
+### System Controls
+- `Ctrl + Alt + q/s/r`: Stop/start/restart yabai
+
+## Customization
+
+### Modifying Window Management
+Edit `~/.config/yabai/yabairc` to adjust:
+- Window gaps and padding
+- Layout behavior
+- Application-specific rules
+
+### Customizing Status Bar
+Edit `~/.config/sketchybar/` files to modify:
+- Bar appearance and position
+- Item configurations
+- Colors and styling
+
+### Neovim Configuration
+Extend `~/.config/nvim/lua/plugins/` to add:
+- Additional language support
+- Custom key bindings
+- New plugins and themes
+
+## Uninstallation
+
+To remove the entire setup:
+```bash
+./uninstall.sh
+```
+
+This will:
+- Stop all services
+- Remove installed packages (using `brew bundle cleanup`)
+- Restore original system settings
+- Clean up configuration files
+
+## Troubleshooting
+
+### Services Won't Start
+1. Check permissions in System Settings > Privacy & Security
+2. Manually start services: `yabai --start-service`, `skhd --start-service`
+3. Restart the services: `brew services restart sketchybar`
+
+### SIP Issues
+- Verify SIP status: `csrutil status`
+- Ensure partial disabling includes required components
+- Check boot-args: `sudo nvram boot-args`
+
+## Contributing
+
+Feel free to fork this repository and customize it for your needs. If you make improvements that could benefit others, pull requests are welcome!
+
+## Credits
+
+This configuration builds upon the excellent work of:
+- [LazyVim](https://github.com/LazyVim/LazyVim) - Neovim configuration
+- [Yabai](https://github.com/koekeishiya/yabai) - Window manager
+- [SketchyBar](https://github.com/FelixKratz/SketchyBar) - Status bar
+- [Catppuccin](https://github.com/catppuccin/nvim) - Color scheme
