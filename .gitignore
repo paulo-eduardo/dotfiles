@@ -77,6 +77,13 @@ yarn/
 lazygit/logs/ # Example: if lazygit creates a logs directory
 # Add other specific files/directories within lazygit/ if needed, but NOT config.yml
 
+# Generated configuration stores and update notifiers
+configstore/
+.claude/
+mcphub/
+uv/
+
 # Ignore common OS generated files
 .DS_Store
 ._*
+Thumbs.db
