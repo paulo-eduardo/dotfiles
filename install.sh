@@ -27,6 +27,14 @@ fi
 echo "Installing apps from Brewfile..."
 brew bundle install --file ./Brewfile
 
+echo "Installing sketchybar-app-font..."
+if [ ! -f "$HOME/Library/Fonts/sketchybar-app-font.ttf" ]; then
+  curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.16/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
+else
+  echo "sketchybar-app-font is already installed."
+fi
+
+
 echo "Installing latest Node.js with nvm..."
 export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix)/opt/nvm/nvm.sh"
@@ -39,6 +47,14 @@ if ! command -v gemini &>/dev/null; then
   npm install -g @google/gemini-cli
 else
   echo "Gemini CLI is already installed."
+fi
+
+echo "Checking for Claude CLI..."
+if ! command -v claude &>/dev/null; then
+  echo "Claude CLI not found. Installing..."
+  npm install -g @anthropic-ai/claude-code
+else
+  echo "Claude CLI is already installed."
 fi
 
 echo "Creating .zshenv file..."
