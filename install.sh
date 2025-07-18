@@ -2,68 +2,46 @@
 
 set -e
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MODULES_DIR="$SCRIPT_DIR/scripts/setup-modules"
+
+source "$MODULES_DIR/system-checks.sh"
+source "$MODULES_DIR/package-management.sh"
+source "$MODULES_DIR/services.sh"
+source "$MODULES_DIR/macos-settings.sh"
+source "$MODULES_DIR/utilities.sh"
+
 echo "Starting setup..."
 
-if ! command -v brew &>/dev/null; then
-  echo "Homebrew not found. Installing..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+check_sip_status || exit 1
 
-  echo >>"$HOME/.zprofile"
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>"$HOME/.zprofile"
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+BOOT_ARGS_OUTPUT=$(configure_boot_args)
+echo "$BOOT_ARGS_OUTPUT"
+if [[ "$BOOT_ARGS_OUTPUT" == *"REBOOT_REQUIRED"* ]]; then
+    REBOOT_REQUIRED=true
 else
-  echo "Homebrew is already installed."
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+    REBOOT_REQUIRED=false
 fi
 
-if [ ! -d "$HOME/.config/oh-my-zsh" ]; then
-  echo "Installing Oh My Zsh..."
-  export KEEP_ZSHRC=yes
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-else
-  echo "Oh My Zsh is already installed."
-fi
+install_homebrew
 
-echo "Installing apps from Brewfile..."
-brew bundle install --file ./Brewfile
+install_oh_my_zsh
 
-echo "Installing sketchybar-app-font..."
-if [ ! -f "$HOME/Library/Fonts/sketchybar-app-font.ttf" ]; then
-  curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.16/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
-else
-  echo "sketchybar-app-font is already installed."
-fi
+install_from_brewfile
 
+install_font
 
-echo "Installing latest Node.js with nvm..."
-export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix)/opt/nvm/nvm.sh"
-nvm install node
-nvm alias default node
+install_node_with_nvm
 
-echo "Checking for Gemini CLI..."
-if ! command -v gemini &>/dev/null; then
-  echo "Gemini CLI not found. Installing..."
-  npm install -g @google/gemini-cli
-else
-  echo "Gemini CLI is already installed."
-fi
+install_npm_package "@google/gemini-cli" "gemini"
+install_npm_package "@anthropic-ai/claude-code" "claude"
 
-echo "Checking for Claude CLI..."
-if ! command -v claude &>/dev/null; then
-  echo "Claude CLI not found. Installing..."
-  npm install -g @anthropic-ai/claude-code
-else
-  echo "Claude CLI is already installed."
-fi
+create_zshenv
 
-echo "Creating .zshenv file..."
-cat <<'EOF' >~/.zshenv
-export ZDOTDIR="$HOME/.config/zsh"
+configure_sudoers
 
-if [[ -f "$ZDOTDIR/.zshenv" ]]; then
-    source "$ZDOTDIR/.zshenv"
-fi
-EOF
+configure_macos_settings
 
-echo "Setup complete!"
+start_all_services
+
+print_completion_message true "$REBOOT_REQUIRED"

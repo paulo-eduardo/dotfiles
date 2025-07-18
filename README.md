@@ -98,20 +98,19 @@ git clone git@github.com:paulo-eduardo/dotfiles.git ~/.config
 
 **4. Reboot your Mac.**
 
-**5. For Apple Silicon, enable non-Apple-signed arm64e binaries:**
-   - Open a terminal and run the following command, then reboot:
-     ```bash
-     sudo nvram boot-args=-arm64e_preview_abi
-     ```
-
-**6. Verify SIP Status:**
+**5. Verify SIP Status:**
    - You can check if SIP is disabled by running `csrutil status` in the terminal. The output should be `System Integrity Protection status: disabled.` (or `unknown` on some newer macOS versions).
 
 ### Step 3: Run the Installation Script
 
-The `install.sh` script will handle the rest of the automated setup. It will:
-- Install Homebrew if it's not already present.
-- Install all applications and tools listed in the `Brewfile`.
+The `install.sh` script will handle the automated setup. It will:
+- Check that SIP is properly disabled for yabai
+- Configure boot-args for Apple Silicon
+- Install Homebrew if it's not already present
+- Install all applications and tools listed in the `Brewfile`
+- Configure sudoers for passwordless yabai operation
+- Configure macOS settings (auto-hide dock and menu bar)
+- Start all services (yabai, skhd, sketchybar)
 
 
 Navigate to the configuration directory and run the script:
@@ -120,56 +119,16 @@ cd ~/.config
 ./install.sh
 ```
 
-### Step 4: Manual Post-Installation Steps
+### Step 4: Grant System Permissions
 
-After the script finishes, a few manual steps are required to grant permissions.
+The installation script will attempt to start services, which will prompt for permissions. If you miss any prompts, manually grant permissions:
 
-**1. Configure Passwordless `sudo` for Yabai:**
-   - `yabai` needs to run a `sudo` command on startup to load its scripting addition. To avoid typing your password every time, you need to add a custom rule to `sudoers`.
-   - First, find the exact path of your `yabai` installation:
-     ```bash
-     which yabai
-     # It should output something like /opt/homebrew/bin/yabai
-     ```
-   - Now, open the `sudoers` file for editing (this is the safe way to do it):
-     ```bash
-     sudo visudo -f /private/etc/sudoers.d/yabai
-     ```
-   - Add the following line to the file, replacing `YOUR_USERNAME` with the output of `whoami` and `/path/to/yabai` with the output of `which yabai`:
-     ```
-     YOUR_USERNAME ALL=(root) NOPASSWD: /path/to/yabai --load-sa
-     ```
-   - Save and exit the editor.
+1. Go to `System Settings > Privacy & Security > Accessibility`.
+2. Enable access for `yabai` and `skhd`.
+3. Go to `System Settings > Privacy & Security > Screen Recording`.
+4. Enable access for `yabai`.
 
-**2. Grant System Permissions:**
-   - Go to `System Settings > Privacy & Security > Accessibility`.
-   - Enable access for `yabai` and `skhd`.
-   - Go to `System Settings > Privacy & Security > Screen Recording`.
-   - Enable access for `yabai`.
-
-### Step 5: Start Yabai, SKHD, and Sketchybar
-
-After the installation and granting permissions, you can start the services for yabai, skhd, and sketchybar. The first time you run these, you might be prompted to grant additional permissions.
-
-```bash
-yabai --start-service
-skhd --start-service
-brew services start sketchybar
-```
-
-### Step 6: Hide the macOS Top Bar and Dock
-
-To achieve a cleaner desktop experience, you can hide the default macOS top bar and dock.
-
-**Hide the Dock:**
-1. Go to `System Settings` > `Desktop & Dock`.
-2. Turn on `Automatically hide and show the Dock`.
-
-**Hide the Menu Bar:**
-1. Go to `System Settings` > `Desktop & Dock`.
-2. Under `Menu Bar`, set `Automatically hide and show the menu bar` to `Always`.
-
-### Step 7: Reboot
+### Step 5: Reboot
 
 A final reboot is recommended to ensure all services and settings are correctly loaded.
 
