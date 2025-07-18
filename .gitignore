@@ -7,10 +7,10 @@ raycast/
 cursor/
 StardewValley/
 oh-my-zsh/
+gh/
 
 # CRITICAL - Contains OAuth tokens and sensitive data
 github-copilot/
-gh/hosts.yml
 
 # Personal/Private data
 tui-journal/
