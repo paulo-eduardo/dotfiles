@@ -8,11 +8,69 @@ cursor/
 StardewValley/
 oh-my-zsh/
 
+# CRITICAL - Contains OAuth tokens and sensitive data
+github-copilot/
+gh/hosts.yml
+
+# Personal/Private data
+tui-journal/
+
 # Ignore Zsh history, completion dumps, and sessions
 zsh/.zsh_history
 zsh/.zcompdump-*
 zsh/.zsh_sessions/
 zsh/.env.zsh
+
+# Security - Authentication and Secrets
+*.secret
+*.secrets
+*token*
+*credential*
+*.key
+*.pem
+*_rsa
+*_dsa
+*_ecdsa
+*_ed25519
+.env
+.env.*
+
+# Password Managers
+1password/
+bitwarden/
+lastpass/
+keepass/
+
+# Cloud Provider Configs
+aws/
+gcloud/
+azure/
+docker/config.json
+
+# Package Managers (may contain auth tokens)
+npm/
+yarn/
+
+# Cache and Temporary Files
+*.log
+*.cache
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+**/cache/
+**/Cache/
+**/logs/
+**/Logs/
+
+# Database and State Files
+*.db
+*.sqlite
+*.sqlite3
+**/state.json
+**/local-state.json
+*.lock
 
 # Ignore potential lazygit logs or temporary files if they appear in ~/.config/lazygit/
 # The config.yml itself should NOT be ignored
@@ -21,3 +79,4 @@ lazygit/logs/ # Example: if lazygit creates a logs directory
 
 # Ignore common OS generated files
 .DS_Store
+._*
