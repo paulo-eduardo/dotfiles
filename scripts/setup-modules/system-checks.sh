@@ -33,6 +33,18 @@ configure_sudoers() {
     else
         echo "Yabai sudoers configuration already exists."
     fi
+    
+    echo "Configuring sudoers for wdutil (SketchyBar WiFi)..."
+    WDUTIL_SUDOERS_FILE="/private/etc/sudoers.d/wdutil"
+    WDUTIL_SUDOERS_LINE="$USERNAME ALL=(root) NOPASSWD: /usr/bin/wdutil"
+    
+    if [ ! -f "$WDUTIL_SUDOERS_FILE" ] || ! sudo grep -q "$WDUTIL_SUDOERS_LINE" "$WDUTIL_SUDOERS_FILE" 2>/dev/null; then
+        echo "Adding wdutil to sudoers..."
+        echo "$WDUTIL_SUDOERS_LINE" | sudo tee "$WDUTIL_SUDOERS_FILE" >/dev/null
+        sudo chmod 440 "$WDUTIL_SUDOERS_FILE"
+    else
+        echo "Wdutil sudoers configuration already exists."
+    fi
 }
 
 remove_sudoers() {
