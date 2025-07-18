@@ -16,20 +16,12 @@ else
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
+if [ ! -d "$HOME/.config/oh-my-zsh" ]; then
   echo "Installing Oh My Zsh..."
   export KEEP_ZSHRC=yes
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 else
   echo "Oh My Zsh is already installed."
-fi
-
-echo "Installing Catppuccin theme for Oh My Zsh..."
-ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
-if [ ! -d "${ZSH_CUSTOM}/themes/catppuccin-zsh" ]; then
-  git clone https://github.com/catppuccin/zsh-theme.git "${ZSH_CUSTOM}/themes/catppuccin-zsh"
-else
-  echo "Catppuccin theme is already installed."
 fi
 
 echo "Installing apps from Brewfile..."
@@ -40,6 +32,14 @@ export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix)/opt/nvm/nvm.sh"
 nvm install node
 nvm alias default node
+
+echo "Checking for Gemini CLI..."
+if ! command -v gemini &>/dev/null; then
+  echo "Gemini CLI not found. Installing..."
+  npm install -g @google/gemini-cli
+else
+  echo "Gemini CLI is already installed."
+fi
 
 echo "Creating .zshenv file..."
 cat <<'EOF' >~/.zshenv
