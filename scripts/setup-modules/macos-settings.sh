@@ -12,6 +12,35 @@ configure_macos_settings() {
     echo "Setting Menu Bar to auto-hide..."
     defaults write NSGlobalDomain _HIHideMenuBar -bool true
     
+    echo "Disabling space switching animation..."
+    defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
+    
+    echo "Reduce motion effects..."
+    defaults write com.apple.universalaccess reduceMotion -bool true
+    
+    echo "Disable window animations..."
+    defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+    
+    echo "Speed up window resize animations..."
+    defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+    
+    echo "Disable smooth scrolling..."
+    defaults write NSGlobalDomain NSScrollAnimationEnabled -bool false
+    
+    echo "Speed up Mission Control animations..."
+    defaults write com.apple.dock expose-animation-duration -float 0.1
+    
+    echo "Remove Dock show/hide delay..."
+    defaults write com.apple.dock autohide-delay -float 0
+    defaults write com.apple.dock autohide-time-modifier -float 0.15
+    
+    echo "Disable press-and-hold for keys (enables key repeat)..."
+    defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+    
+    echo "Set fast key repeat rate..."
+    defaults write NSGlobalDomain KeyRepeat -int 1
+    defaults write NSGlobalDomain InitialKeyRepeat -int 10
+    
     echo "Restarting Dock to apply changes..."
     killall Dock
 }
@@ -27,6 +56,35 @@ restore_macos_settings() {
     
     echo "Disabling Menu Bar auto-hide..."
     defaults write NSGlobalDomain _HIHideMenuBar -bool false
+    
+    echo "Enabling space switching animation..."
+    defaults write com.apple.dock workspaces-swoosh-animation-off -bool NO
+    
+    echo "Restore default motion effects..."
+    defaults write com.apple.universalaccess reduceMotion -bool false
+    
+    echo "Enable window animations..."
+    defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool true
+    
+    echo "Restore default window resize animations..."
+    defaults write NSGlobalDomain NSWindowResizeTime -float 0.2
+    
+    echo "Enable smooth scrolling..."
+    defaults write NSGlobalDomain NSScrollAnimationEnabled -bool true
+    
+    echo "Restore default Mission Control animations..."
+    defaults write com.apple.dock expose-animation-duration -float 0.5
+    
+    echo "Restore default Dock show/hide delay..."
+    defaults write com.apple.dock autohide-delay -float 0.5
+    defaults write com.apple.dock autohide-time-modifier -float 0.5
+    
+    echo "Enable press-and-hold for keys..."
+    defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true
+    
+    echo "Restore default key repeat rate..."
+    defaults write NSGlobalDomain KeyRepeat -int 2
+    defaults write NSGlobalDomain InitialKeyRepeat -int 15
     
     echo "Restarting Dock to apply changes..."
     killall Dock

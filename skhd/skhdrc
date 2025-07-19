@@ -85,6 +85,9 @@ ctrl - 4 : yabai -m space --focus 4;
 ctrl - 5 : yabai -m space --focus 5;
 ctrl - 6 : yabai -m space --focus 6;
 ctrl - 7 : yabai -m space --focus 7;
+ctrl - right : yabai -m space --focus next
+ctrl - left : yabai -m space --focus prev
+
 
 # Open Ghostty with global tmux session in a floating window at the bottom third of the screen
 # cmd + alt - f : open -na "Ghostty" --args -e ~/.config/global-scripts/tmux-global.sh; \
