@@ -1,19 +1,23 @@
-{
-  "spaces": [
-    {
-      "space": 9,
-      "apps": [
-        {
-          "name": "Calendar"
-        },
-        {
-          "name": "Terminal",
-          "cmd": "tt || taskwarrior-tui"
-        }
-      ]
-    },
-    { "space": 8, "apps": [{ "name": "Slack" }, { "name": "WhatsApp" }] }
-  ],
-  "finalSpace": 1
-}
-
+[
+  {
+    "name": "Calendar",
+    "space": 9,
+    "position": "left"
+  },
+  {
+    "name": "Terminal",
+    "cmd": "taskwarrior-tui",
+    "space": 9,
+    "position": "right"
+  },
+  {
+    "name": "Slack",
+    "space": 8,
+    "position": "left"
+  },
+  {
+    "name": "WhatsApp",
+    "space": 8,
+    "position": "right"
+  }
+]
