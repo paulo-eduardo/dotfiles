@@ -83,6 +83,7 @@ plugins=(
     macos          # macOS-specific commands and aliases
     docker         # Docker commands completion
     npm            # npm commands completion
+    direnv
 )
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -130,3 +131,10 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/opt/homebrew/opt/python@3.11/libexec/bin:$PATH"
 
 eval "$(starship init zsh)"
+
+# bun completions
+[ -s "/Users/paulo/.bun/_bun" ] && source "/Users/paulo/.bun/_bun"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export PATH="$HOME/.claude/local:$PATH"

@@ -34,12 +34,12 @@ configure_macos_settings() {
     defaults write com.apple.dock autohide-delay -float 0
     defaults write com.apple.dock autohide-time-modifier -float 0.15
     
-    echo "Disable press-and-hold for keys (enables key repeat)..."
-    defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+    echo "Enable press-and-hold for accents..."
+    defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true
     
-    echo "Set fast key repeat rate..."
-    defaults write NSGlobalDomain KeyRepeat -int 1
-    defaults write NSGlobalDomain InitialKeyRepeat -int 10
+    echo "Set default key repeat rate..."
+    defaults write NSGlobalDomain KeyRepeat -int 2
+    defaults write NSGlobalDomain InitialKeyRepeat -int 15
     
     echo "Restarting Dock to apply changes..."
     killall Dock
