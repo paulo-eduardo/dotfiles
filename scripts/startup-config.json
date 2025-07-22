@@ -1,0 +1,19 @@
+{
+  "spaces": [
+    {
+      "space": 9,
+      "apps": [
+        {
+          "name": "Calendar"
+        },
+        {
+          "name": "Terminal",
+          "cmd": "tt || taskwarrior-tui"
+        }
+      ]
+    },
+    { "space": 8, "apps": [{ "name": "Slack" }, { "name": "WhatsApp" }] }
+  ],
+  "finalSpace": 1
+}
+
