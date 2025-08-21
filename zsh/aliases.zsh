@@ -3,6 +3,7 @@
 alias tj="tjournal -c ~/.config/tui-journal/config.toml"
 alias tt="taskwarrior-tui"
 alias awslocal="AWS_ACCESS_KEY_ID=test AWS_SECRET_ACCESS_KEY=test AWS_DEFAULT_REGION=${${DEFAULT_REGION:-$AWS_DEFAULT_REGION}:-us-west-2} aws --endpoint-url=http://${LOCALSTACK_HOST:-localhost}:4566"
+alias claude="~/.claude/local/claude"
 
 # Smart virtual environment activation
 # Detects and activates Python virtual environments based on what's available

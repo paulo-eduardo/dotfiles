@@ -19,7 +19,6 @@ brew "luarocks"
 brew "yt-dlp"
 brew "mpv"
 brew "neovim"
-brew "nvm"
 brew "ollama", restart_service: :changed
 brew "pngpaste"
 brew "python@3.11"

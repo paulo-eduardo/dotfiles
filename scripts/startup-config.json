@@ -12,12 +12,12 @@
   },
   {
     "name": "Slack",
-    "space": 8,
+    "space": 7,
     "position": "left"
   },
   {
     "name": "WhatsApp",
-    "space": 8,
+    "space": 7,
     "position": "right"
   }
 ]

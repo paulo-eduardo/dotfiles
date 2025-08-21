@@ -75,12 +75,10 @@ uninstall_from_brewfile() {
     fi
 }
 
-install_node_with_nvm() {
-    echo "Installing latest Node.js with nvm..."
-    export NVM_DIR="$HOME/.nvm"
-    . "$(brew --prefix)/opt/nvm/nvm.sh"
-    nvm install node
-    nvm alias default node
+install_node_with_asdf() {
+    echo "Installing latest Node.js with asdf..."
+    asdf install nodejs latest
+    asdf set --home nodejs latest
 }
 
 install_npm_package() {
