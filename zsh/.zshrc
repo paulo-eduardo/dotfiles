@@ -134,3 +134,5 @@ autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+alias claude="/Users/paulo/.claude/local/claude"
