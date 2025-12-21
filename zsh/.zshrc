@@ -135,3 +135,25 @@ compinit
 # End of Docker CLI completions
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
+
+# Load environment variables from .env file in zsh directory
+if [ -f ~/.config/zsh/.env ]; then
+    set -a
+    source ~/.config/zsh/.env
+    set +a
+fi
+
+
+export PATH="$HOME/.local/bin:$PATH"
+. "$HOME/.cargo/env"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+
+# Java for Android development
+export JAVA_HOME=/opt/homebrew/opt/openjdk@17
+export PATH="$JAVA_HOME/bin:$PATH"

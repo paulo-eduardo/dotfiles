@@ -75,32 +75,12 @@ uninstall_from_brewfile() {
     fi
 }
 
-install_node_with_asdf() {
-    echo "Installing latest Node.js with asdf..."
-    asdf install nodejs latest
-    asdf set --home nodejs latest
-}
-
-install_npm_package() {
-    local package_name=$1
-    local command_name=$2
-    
-    echo "Checking for $command_name..."
-    if ! command -v "$command_name" &>/dev/null; then
-        echo "$command_name not found. Installing..."
-        npm install -g "$package_name"
+install_claude() {
+    echo "Installing Claude Code..."
+    if ! command -v claude &>/dev/null; then
+        curl -fsSL https://claude.ai/install.sh | bash
     else
-        echo "$command_name is already installed."
-    fi
-}
-
-uninstall_npm_package() {
-    local package_name=$1
-    local command_name=$2
-    
-    if command -v "$command_name" &>/dev/null; then
-        npm uninstall -g "$package_name"
-        echo "Uninstalled $command_name."
+        echo "Claude Code is already installed."
     fi
 }
 

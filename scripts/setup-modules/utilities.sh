@@ -53,6 +53,12 @@ print_completion_message() {
             echo "⚠️  IMPORTANT: A reboot is required for the boot-args changes to take effect."
             echo "   Please restart your Mac when convenient."
         fi
+
+        echo ""
+        echo "📱 For iOS/React Native development:"
+        echo "   1. Install Xcode from the App Store"
+        echo "   2. Run: xcode-select --install"
+        echo "   3. Run: sudo xcodebuild -license accept"
     else
         echo "Note: The following items require manual intervention:"
         echo "1. Re-enable SIP if you disabled it (requires recovery mode)"

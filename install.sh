@@ -31,10 +31,7 @@ install_from_brewfile
 
 install_font
 
-install_node_with_asdf
-
-install_npm_package "@google/gemini-cli" "gemini"
-install_npm_package "@anthropic-ai/claude-code" "claude"
+install_claude
 
 create_zshenv
 

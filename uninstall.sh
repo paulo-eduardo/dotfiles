@@ -27,9 +27,6 @@ revert_boot_args
 
 remove_font
 
-uninstall_npm_package "@google/gemini-cli" "gemini"
-uninstall_npm_package "@anthropic-ai/claude-code" "claude"
-
 remove_zshenv
 
 uninstall_from_brewfile
