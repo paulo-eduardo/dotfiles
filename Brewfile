@@ -26,7 +26,6 @@ brew "luarocks"
 brew "yt-dlp"
 brew "mpv"
 brew "neovim"
-brew "ollama", restart_service: :changed
 brew "openjdk"
 brew "openjdk@17"
 brew "pkgconf"
