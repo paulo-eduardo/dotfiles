@@ -40,7 +40,12 @@ configure_macos_settings() {
     echo "Set default key repeat rate..."
     defaults write NSGlobalDomain KeyRepeat -int 2
     defaults write NSGlobalDomain InitialKeyRepeat -int 15
-    
+
+    echo "Disabling Spotlight shortcut (use Raycast instead)..."
+    # Disable Cmd+Space for Spotlight
+    /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:64:enabled false" ~/Library/Preferences/com.apple.symbolichotkeys.plist 2>/dev/null || \
+    /usr/libexec/PlistBuddy -c "Add :AppleSymbolicHotKeys:64:enabled bool false" ~/Library/Preferences/com.apple.symbolichotkeys.plist 2>/dev/null || true
+
     echo "Restarting Dock to apply changes..."
     killall Dock
 }
