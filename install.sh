@@ -25,6 +25,8 @@ fi
 
 install_homebrew
 
+install_xcode_cli
+
 install_oh_my_zsh
 
 install_from_brewfile

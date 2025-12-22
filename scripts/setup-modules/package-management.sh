@@ -33,12 +33,31 @@ uninstall_homebrew() {
 }
 
 install_oh_my_zsh() {
-    if [ ! -d "$HOME/.config/oh-my-zsh" ]; then
+    if [ ! -d "$HOME/.config/oh-my-zsh" ] && [ ! -d "$HOME/.oh-my-zsh" ]; then
         echo "Installing Oh My Zsh..."
+        export ZSH="$HOME/.config/oh-my-zsh"
         export KEEP_ZSHRC=yes
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     else
         echo "Oh My Zsh is already installed."
+    fi
+}
+
+install_xcode_cli() {
+    echo "Checking Xcode Command Line Tools..."
+    if ! xcode-select -p &>/dev/null; then
+        echo "Installing Xcode Command Line Tools..."
+        xcode-select --install
+        echo "Please complete the Xcode CLI installation popup, then press Enter to continue..."
+        read -r
+    else
+        echo "Xcode Command Line Tools already installed."
+    fi
+
+    # Accept license if needed
+    if ! sudo xcodebuild -license status &>/dev/null 2>&1; then
+        echo "Accepting Xcode license..."
+        sudo xcodebuild -license accept
     fi
 }
 
