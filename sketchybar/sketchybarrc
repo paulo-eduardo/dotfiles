@@ -18,7 +18,7 @@ ITEM_DIR="$CONFIG_DIR/items"
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
 sketchybar --bar height=30 \
-  blur_radius=30 \
+  blur_radius=0 \
   position=top \
   sticky=on \
   floating=on \
